@@ -12,7 +12,8 @@ SimonSays::SimonSays()
 	{
 		row.pack_start(buttons[i]);
 		row.show();
-		buttons[i].set_label("b");
+		buttons[i].def.set("Buttons_Green/Button_Unclicked.png");
+		buttons[i].set_image(buttons[i].def);
 	}
 
 	box.pack_start(start);

@@ -5,6 +5,8 @@
 #include <gtkmm/button.h>
 #include <gtkmm/window.h>
 
+#include "Button.h"
+
 class SimonSays : public Gtk::Window
 {
 public:
@@ -16,8 +18,8 @@ protected:
 
 	Gtk::Box box;
 	Gtk::Box row;
-	Gtk::Button buttons[4];
-	Gtk::Button start;
+	Button buttons[4];
+	Button start;
 };
 
 #endif
