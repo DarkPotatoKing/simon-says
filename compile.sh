@@ -1,0 +1,3 @@
+echo Compiling...
+g++ *.cpp `pkg-config gtkmm-3.0 --cflags --libs`
+echo Done.
