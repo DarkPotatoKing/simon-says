@@ -1,7 +1,16 @@
 #include "SimonSays.h"
 
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+
+#include <gtkmm/main.h>
+#include <glibmm.h>
+
 SimonSays::SimonSays()
 {
+	srand(time(NULL));
+
 	set_title("Simon Says");
 	
 	add(box);
@@ -39,4 +48,42 @@ void SimonSays::start_clicked()
 		buttons[i].show();
 	}
 	start.hide();
+
+	startRound();
+}
+
+void SimonSays::simonSays()
+{
+
+	//iterate through every item in the list
+	for (std::list<int>::iterator i = seq.begin(); i != seq.end(); ++i)
+	{
+		//print on terminal
+		//std::cout << *i << " ";
+		
+		//set image to "clicked"
+		buttons[*i].set_image(buttons[*i].clk);
+
+		while( Gtk::Main::events_pending())
+		{
+			Gtk::Main::iteration();			
+		}
+		//wait for 5 seconds
+		Glib::usleep(5000000);
+
+		//set image to "unclicked/normal"
+		buttons[*i].set_image(buttons[*i].def);
+
+		
+	}
+}
+
+void SimonSays::startRound()
+{
+	state = ROUNDSTATE;
+	for (int i = 0; i < 4; ++i)
+	{
+		seq.push_back(i);
+	}
+	simonSays();
 }
