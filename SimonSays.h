@@ -11,6 +11,9 @@ public:
 	SimonSays();
 	virtual ~SimonSays();
 protected:
+	void start_clicked();
+
+
 	Gtk::Box box;
 	Gtk::Box row;
 	Gtk::Button buttons[4];
